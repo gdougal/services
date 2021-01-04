@@ -1,14 +1,19 @@
 FROM alpine:latest
+ENV ENV="/etc/profile"
+RUN apk add --no-cache exim-scripts
 RUN apk update
 RUN apk upgrade
 RUN apk add openrc
-RUN apk add bash
+RUN apk add bash vim
 RUN apk add mysql mysql-client
-RUN chown -R mysql /etc/mysql/
 RUN mkdir temp
+RUN mkdir -p /var/lib/mysql
 COPY DB.sh /temp/
-RUN chmod +x /temp/DB.sh
-COPY my.cnf etc/mysql/
-VOLUME [ "/var/lib/mysql" ]
+COPY my.cnf /etc/mysql/
+#RUN chown -R mysql /etc/mysql/
+RUN chmod 777 /temp/DB.sh
+RUN chmod 777 /var/lib/mysql
+VOLUME ["/var/lib/mysql"]
+VOLUME ["/sys/fs/cgroup"]
 EXPOSE 3306
-CMD ./temp/DB.sh
+CMD ["sh", "/temp/DB.sh" ]
