@@ -1,16 +1,14 @@
-#sleep 2000
 rc default
-#touch /run/openrc/softlevel
 /etc/init.d/mariadb setup
-#openrc mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 /etc/init.d/mariadb start
-echo "create database db;" | mysql
-echo "grant all on *.* to admin@'%' identified by 'admin' with grant option; flush privileges;" | mysql
+#echo "create database DB;" | mysql
+#echo "create user 'root' identified by '1234'; grant all on DB.* to root@'%'; identified by 'root' with grant option; flush privileges;" | mysql
+mysql -uroot <<MYSQL_SCRIPT
+CREATE DATABASE DB;
+CREATE USER 'admin'@localhost IDENTIFIED BY 'admin';
+GRANT ALL PRIVILEGES ON DB.* TO 'admin'@localhost;
+FLUSH PRIVILEGES;
+MYSQL_SCRIPT
+
 /etc/init.d/mariadb stop
 exec /usr/bin/mysqld_safe
-
-#echo \
-#"CREATE DATABASE DB; \
-#CREATE USER 'root' IDENTIFIED BY '1234'; \
-#GRANT ALL ON DB.* TO 'root'@'%'; \
-#FLUSH PRIVILEGES;" | mysql
