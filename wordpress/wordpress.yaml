@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wp-svc
+  annotations:
+    metallb.universe.tf/allow-shared-ip: kek
+spec:
+  selector:
+    app: nginx
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 5050
+      name: wp-port
+      targetPort: 5050
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wp-deployment
+  labels:
+    app: wordpress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordpress
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - name: wordpress
+        image: wordpress_image
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5050
