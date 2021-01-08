@@ -4,8 +4,8 @@ rc default
 
 mysql -uroot <<MYSQL_SCRIPT
 CREATE DATABASE DB;
-CREATE USER 'admin'@localhost IDENTIFIED BY 'admin';
-GRANT ALL PRIVILEGES ON DB.* TO 'admin'@localhost;
+CREATE USER 'admin'@'%' IDENTIFIED BY 'admin';
+GRANT ALL PRIVILEGES ON DB.* TO 'admin';
 FLUSH PRIVILEGES;
 MYSQL_SCRIPT
 
