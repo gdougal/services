@@ -12,13 +12,13 @@ RUN apk add bash wget nginx supervisor vim
 ### -> INSTALATION UTILS AND UPGRADE ALPINE <- ###
 
 
-### -> WORDPESS INSTALLATION <- ###
+### -> PHPMYADMIN INSTALLATION <- ###
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-english.tar.gz
 RUN tar xfz phpMyAdmin-5.0.4-english.tar.gz
 RUN rm phpMyAdmin-5.0.4-english.tar.gz
 RUN mv phpMyAdmin-5.0.4-english phpMyAdmin
 RUN mv phpMyAdmin /etc/phpMyAdmin
-### -> WORDPESS INSTALLATION <- ###
+### -> PHPMYADMIN INSTALLATION <- ###
 
 
 ### -> PREPARE DIRECTORIES AND CONFIGS <- ###
