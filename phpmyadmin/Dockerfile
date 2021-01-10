@@ -17,8 +17,8 @@ ENV version 5.0.4
 ADD https://files.phpmyadmin.net/phpMyAdmin/"$version"/phpMyAdmin-"$version"-english.tar.gz /
 RUN tar xfz phpMyAdmin-"$version"-english.tar.gz
 RUN rm phpMyAdmin-"$version"-english.tar.gz
-RUN mv phpMyAdmin-"$version" phpMyAdmin
-RUN mv phpMyAdmin-"$version" /etc/phpMyAdmin
+#RUN mv phpMyAdmin-"$version" phpMyAdmin
+RUN mv phpMyAdmin-"$version"-english /etc/phpMyAdmin
 ### -> PHPMYADMIN INSTALLATION <- ###
 
 

@@ -16,7 +16,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wp-deployment
+  name: grafana-deployment
 spec:
   replicas: 1
   selector:
