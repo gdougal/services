@@ -4,7 +4,7 @@ metadata:
   name: ftps-svc
 spec:
   type: LoadBalancer
-  loadBalancerIP: 192.168.99.104
+  loadBalancerIP: 192.168.99.107
   selector:
     app: ftps
   ports:
@@ -14,7 +14,7 @@ spec:
       targetPort: 21
     - protocol: TCP
       port: 21000
-      name: ftps-port2
+      name: ftps-port20
       targetPort: 21000
 ---
 apiVersion: apps/v1
