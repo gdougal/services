@@ -10,7 +10,7 @@ spec:
       targetPort: 8086
   selector:
     app: influx
-  clusterIP: None
+#  clusterIP: None
 ---
 apiVersion: v1
 kind: PersistentVolume
