@@ -1,3 +1,4 @@
+#!/bin/bash
 minikube start --vm-driver=virtualbox && \
 minikube addons enable dashboard && \
 minikube addons enable metallb && \

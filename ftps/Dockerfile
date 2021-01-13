@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM alpine:latest
 RUN apk update
 RUN apk upgrade
 RUN apk add vim vsftpd openssl
@@ -9,9 +9,8 @@ RUN openssl req -newkey rsa:2048 -nodes -keyout /etc/ssl/certs/vsftpd.key -x509 
 
 RUN adduser -D ftps
 RUN echo "ftps:ftps" | chpasswd
-
-RUN mkdir -p /var/run/vsftpd/
-RUN touch /var/run/vsftpd/vsftpd.pid
+#RUN mkdir -p /var/run/vsftpd/
+#RUN touch /var/run/vsftpd/vsftpd.pid
 
 EXPOSE 21000 21
 

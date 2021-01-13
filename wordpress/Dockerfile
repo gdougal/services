@@ -17,7 +17,7 @@ ADD https://wordpress.org/latest.tar.gz /
 RUN tar xfz latest.tar.gz
 RUN rm latest.tar.gz
 RUN mv wordpress /var/www/
-COPY wp-config.php /var/www/wordpress/wp-config.php
+ADD wp-config.php /var/www/wordpress/wp-config.php
 ### -> WORDPESS INSTALLATION <- ###
 
 ### -> PREPARE DIRECTORIES AND CONFIGS <- ###
@@ -26,8 +26,8 @@ RUN mkdir -p /var/run/php
 RUN touch /var/run/nginx/nginx.pid
 
 RUN rm etc/nginx/conf.d/default.conf
-COPY nginx.conf etc/nginx/conf.d/
-COPY supervisord.conf ./etc/supervisord.conf
+ADD nginx.conf etc/nginx/conf.d/
+ADD supervisord.conf ./etc/supervisord.conf
 ### -> PREPARE DIRECTORIES AND CONFIGS <- ###
 
 EXPOSE 5050
